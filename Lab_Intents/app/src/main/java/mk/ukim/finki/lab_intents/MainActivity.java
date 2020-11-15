@@ -2,13 +2,17 @@ package mk.ukim.finki.lab_intents;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Context context = getApplicationContext();
         textView = findViewById(R.id.textView);
         Intent intent = getIntent();
         String str = intent.getStringExtra("type");
@@ -36,13 +40,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        implicitActivity = findViewById(R.id.implicitActivity);
-//        implicitActivity.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               startActivity(new Intent(MainActivity.this, ImplicitActivity.class));
-//            }
-//        });
+        implicitActivity = findViewById(R.id.implicitActivity);
+        implicitActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(MainActivity.this,ImplicitActivity.class);
+                mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(mainIntent);
+            }
+        });
 
         share = findViewById(R.id.share);
         share.setOnClickListener(new View.OnClickListener() {
