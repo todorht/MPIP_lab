@@ -48,8 +48,6 @@ public class ListViewAdapter<T> extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.row, null, false);
         }
 
-
-
         ResolveInfo info = appInfo.get(position);
 
         TextView appInfoText = convertView.findViewById(R.id.appInfo);
